@@ -1,0 +1,14 @@
+# VNet Peering between vnet1 and vnet2
+az network vnet peering create \
+  --name MST300-vnet1-to-vnet2 \
+  --resource-group MST300-project2-rg \
+  --vnet-name MST300-vnet1 \
+  --remote-vnet MST300-vnet2 \
+  --allow-vnet-access
+
+az network vnet peering create \
+  --name MST300-vnet2-to-vnet1 \
+  --resource-group MST300-project2-rg \
+  --vnet-name MST300-vnet2 \
+  --remote-vnet MST300-vnet1 \
+  --allow-vnet-access
