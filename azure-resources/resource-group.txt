@@ -1,0 +1,4 @@
+# Create Resource Group
+az group create \
+  --name MST300-project2-rg \
+  --location eastus
