@@ -1,0 +1,21 @@
+# Create VNet1 with two subnets
+az network vnet create \
+  --resource-group MST300-project2-rg \
+  --name MST300-vnet1 \
+  --address-prefix 10.0.0.0/16 \
+  --subnet-name vnet1-subnet1 \
+  --subnet-prefix 10.0.1.0/24
+
+az network vnet subnet create \
+  --resource-group MST300-project2-rg \
+  --vnet-name MST300-vnet1 \
+  --name AzureBastionSubnet \
+  --address-prefix 10.0.2.0/24
+
+# Create VNet2 with one subnet
+az network vnet create \
+  --resource-group MST300-project2-rg \
+  --name MST300-vnet2 \
+  --address-prefix 10.1.0.0/16 \
+  --subnet-name vnet2-subnet1 \
+  --subnet-prefix 10.1.1.0/24
