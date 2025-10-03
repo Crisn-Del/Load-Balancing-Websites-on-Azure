@@ -1,1 +1,36 @@
+# Create Internal Load Balancer
+az network lb create \
+  --resource-group MST300-project2-rg \
+  --name MST300-lb \
+  --sku Standard \
+  --vnet-name MST300-vnet1 \
+  --subnet vnet1-subnet1 \
+  --frontend-ip-name MST300-FrontEnd \
+  --backend-pool-name MST300-BackendPool \
+  --private-ip-address-version IPv4
+
+# Health Probe
+az network lb probe create \
+  --resource-group MST300-project2-rg \
+  --lb-name MST300-lb \
+  --name MST300-HealthProbe \
+  --protocol Http \
+  --port 80 \
+  --path / \
+  --interval 15 \
+  --threshold 3
+
+# Load Balancer Rule
+az network lb rule create \
+  --resource-group MST300-project2-rg \
+  --lb-name MST300-lb \
+  --name MST300-HTTPRule \
+  --protocol Tcp \
+  --frontend-port 80 \
+  --backend-port 80 \
+  --frontend-ip-name MST300-FrontEnd \
+  --backend-pool-name MST300-BackendPool \
+  --probe-name MST300-HealthProbe \
+  --idle-timeout 15 \
+  --enable-tcp-reset true
 
