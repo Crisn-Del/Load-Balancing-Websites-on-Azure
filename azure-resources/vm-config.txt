@@ -1,0 +1,42 @@
+# Webserver1 VM
+az vm create \
+  --resource-group MST300-project2-rg \
+  --name webserver1-vm \
+  --image Win2019Datacenter \
+  --size Standard_B1s \
+  --vnet-name MST300-vnet1 \
+  --subnet vnet1-subnet1 \
+  --availability-zone 1 \
+  --nsg "" \
+  --public-ip-address "" \
+  --admin-username azureuser \
+  --admin-password 'Password1234!' \
+  --no-wait
+
+# Webserver2 VM
+az vm create \
+  --resource-group MST300-project2-rg \
+  --name webserver2-vm \
+  --image Win2019Datacenter \
+  --size Standard_B1s \
+  --vnet-name MST300-vnet1 \
+  --subnet vnet1-subnet1 \
+  --availability-zone 2 \
+  --nsg "" \
+  --public-ip-address "" \
+  --admin-username azureuser \
+  --admin-password 'Password1234!' \
+  --no-wait
+
+# Client VM (Linux or Windows)
+az vm create \
+  --resource-group MST300-project2-rg \
+  --name client-vm \
+  --image Ubuntu2204 \
+  --size Standard_B1s \
+  --vnet-name MST300-vnet2 \
+  --subnet vnet2-subnet1 \
+  --public-ip-address "" \
+  --admin-username azureuser \
+  --admin-password 'Password1234!' \
+  --no-wait
