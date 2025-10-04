@@ -1,0 +1,14 @@
+# Public IP for Bastion
+az network public-ip create \
+  --resource-group MST300-project2-rg \
+  --name MST300-BastionIP \
+  --sku Standard \
+  --location eastus
+
+# Bastion Host
+az network bastion create \
+  --resource-group MST300-project2-rg \
+  --name MST300-BastionHost \
+  --public-ip-address MST300-BastionIP \
+  --vnet-name MST300-vnet1 \
+  --location eastus
